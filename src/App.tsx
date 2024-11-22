@@ -1,106 +1,85 @@
-export default function App() {
+import React, { useState } from 'react';
+import { MoonIcon, SunIcon } from '@radix-ui/react-icons';
+
+import { ThemeProvider, useTheme } from '@/components/theme-provider';
+import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+
+import logo from './assets/react.svg';
+
+import viteLogo from '/vite.svg';
+import { ModeToggle } from './components/mode-toggle';
+
+function App() {
+  return (
+    <ThemeProvider defaultTheme="system" storageKey="ui-theme">
+      <Welcome />
+    </ThemeProvider>
+  );
+}
+
+function Welcome() {
+  const [count, setCount] = useState(0);
+
   return (
     <>
-      <div>
-        <div className="grid grid-cols-10 gap-2">
-          <div className="bg-sky-50 aspect-square"></div>
-          <div className="bg-sky-100 aspect-square"></div>
-          <div className="bg-sky-200 aspect-square"></div>
-          <div className="bg-sky-300 aspect-square"></div>
-          <div className="bg-sky-400 aspect-square"></div>
-          <div className="bg-sky-500 aspect-square"></div>
-          <div className="bg-sky-600 aspect-square"></div>
-          <div className="bg-sky-700 aspect-square"></div>
-          <div className="bg-sky-800 aspect-square"></div>
-          <div className="bg-sky-900 aspect-square"></div>
-        </div>
-        <div className="grid grid-cols-10 gap-2">
-          <div className="bg-blue-50 aspect-square"></div>
-          <div className="bg-blue-100 aspect-square"></div>
-          <div className="bg-blue-200 aspect-square"></div>
-          <div className="bg-blue-300 aspect-square"></div>
-          <div className="bg-blue-400 aspect-square"></div>
-          <div className="bg-blue-500 aspect-square"></div>
-          <div className="bg-blue-600 aspect-square"></div>
-          <div className="bg-blue-700 aspect-square"></div>
-          <div className="bg-blue-800 aspect-square"></div>
-          <div className="bg-blue-900 aspect-square"></div>
-        </div>
-        <div className="grid grid-cols-10 gap-2">
-          <div className="bg-indigo-50 aspect-square"></div>
-          <div className="bg-indigo-100 aspect-square"></div>
-          <div className="bg-indigo-200 aspect-square"></div>
-          <div className="bg-indigo-300 aspect-square"></div>
-          <div className="bg-indigo-400 aspect-square"></div>
-          <div className="bg-indigo-500 aspect-square"></div>
-          <div className="bg-indigo-600 aspect-square"></div>
-          <div className="bg-indigo-700 aspect-square"></div>
-          <div className="bg-indigo-800 aspect-square"></div>
-          <div className="bg-indigo-900 aspect-square"></div>
-        </div>
-        <div className="grid grid-cols-10 gap-2">
-          <div className="bg-violet-50 aspect-square"></div>
-          <div className="bg-violet-100 aspect-square"></div>
-          <div className="bg-violet-200 aspect-square"></div>
-          <div className="bg-violet-300 aspect-square"></div>
-          <div className="bg-violet-400 aspect-square"></div>
-          <div className="bg-violet-500 aspect-square"></div>
-          <div className="bg-violet-600 aspect-square"></div>
-          <div className="bg-violet-700 aspect-square"></div>
-          <div className="bg-violet-800 aspect-square"></div>
-          <div className="bg-violet-900 aspect-square"></div>
-        </div>
+      <div className="absolute right-4 top-4 md:right-8 md:top-8">
+        <ModeToggle />
       </div>
-      <div>
-        <div className="grid grid-cols-2 gap-6">
-          <div className="shadow-sm bg-white rounded-lg">
-            shadow-sm
+      <div className="text-center">
+        <header className="h-svh flex flex-col items-center justify-center gap-6">
+          <div className="flex flex-col items-center justify-center gap-4">
+            <div className="flex flex-row items-center justify-center gap-4">
+              <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
+                <img
+                  src={viteLogo}
+                  className="h-16 transition-[filter] duration-300 hover:drop-shadow-[0_0_2em_#646cffaa]"
+                  alt="Vite logo"
+                />
+              </a>
+              <a href="https://react.dev" target="_blank" rel="noreferrer">
+                <img
+                  src={logo}
+                  className="h-16 motion-safe:animate-[spin_20s_linear_infinite] transition-[filter] duration-300 hover:drop-shadow-[0_0_2em_#61dafbaa]"
+                  alt="React logo"
+                />
+              </a>
+            </div>
+            <h1 className="text-2xl font-semibold">Vite + React</h1>
+            <p className="text-sm text-muted-foreground">
+              Edit{' '}
+              <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
+                src/App.tsx
+              </code>{' '}
+              and save to reload.
+            </p>
           </div>
-          <div className="shadow bg-white rounded-lg">
-            shadow
+          <div className="flex flex-row gap-2">
+            <Button asChild>
+              <a
+                href="https://reactjs.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Learn React
+              </a>
+            </Button>
+            <Button
+              variant="ghost"
+              onClick={() => setCount((count) => count + 1)}
+            >
+              Count is {count}
+            </Button>
           </div>
-          <div className="shadow-md bg-white rounded-lg">
-            shadow-md
-          </div>
-          <div className="shadow-lg bg-white rounded-lg">
-            shadow-lg
-          </div>
-          <div className="shadow-xl bg-white rounded-lg">
-            shadow-xl
-          </div>
-          <div className="shadow-2xl bg-indigo-50 hover:drop-shadow-xl rounded-lg">
-            shadow-2xl
-          </div>
-        </div>
-      </div>
-      <div>
-        <div className="space-y-4">
-          <div className="w-96 bg-white shadow rounded">
-            w-96
-          </div>
-          <div className="w-80 bg-white shadow rounded">
-            w-80
-          </div>
-          <div className="w-72 bg-white shadow rounded">
-            w-72
-          </div>
-          <div className="w-64 bg-white shadow rounded">
-            w-64
-          </div>
-          <div className="w-60 bg-white shadow rounded">
-            w-60
-          </div>
-          <div className="w-56 bg-white shadow rounded">
-            w-56
-          </div>
-          <div className="w-52 bg-white shadow rounded">
-            w-52
-          </div>
-          <div className="w-48 bg-white shadow rounded">
-            w-48
-          </div>
-        </div>
+        </header>
       </div>
     </>
-  )
+  );
 }
+
+export default App;
