@@ -1,0 +1,31 @@
+.dev-monitor-panel {
+  .tsqd-open-btn-container {
+    position: static !important; /* 修改为普通定位 */
+  }
+  .go3489369143 div {
+    position: static !important; /* 修改为普通定位 */
+  }
+}
+
+.layout {
+  overflow-y: auto !important;
+  height: 100vh !important;
+  overflow-y: hidden; /* Tắt thanh cuộn dọc */
+  overflow-x: auto; /* Bật thanh cuộn ngang nếu cần */
+}
+
+/* Tùy chỉnh thanh cuộn cho WebKit */
+.layout::-webkit-scrollbar {
+  display: none; /* Ẩn thanh cuộn */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
